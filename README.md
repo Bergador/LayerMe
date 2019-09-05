@@ -10,4 +10,6 @@ into a handy clickable button on your screen:
 
 Requires other people in your guild to have the addon, but your guild chat is already getting spammed with "LAYER ME PLS" anyway, so the addon will simply whisper those people with the addon link and ask them to keep guild chat clean.
 
+You can even keybind this by assigning a bind under KeyBindungs -> Addons -> LayerMe.
+
 Nice meta you got going on there blizz #notmyclassic
