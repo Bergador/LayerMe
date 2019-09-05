@@ -1,5 +1,5 @@
 <Bindings>
-	<Binding name="Next Layer" header="LayerMe">
+	<Binding name="LayerMe" description="LayerMe" header="LayerMe" category="ADDONS">
 		RequestNewLayer();
 	</Binding>
 </Bindings>

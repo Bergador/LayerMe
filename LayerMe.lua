@@ -37,13 +37,15 @@ X grey button out when grouped
 X auto accept invite from player determined to be responsible for inviting you
 X remember old layer and send with
 
-- whisper people not to use guild chat
-- remember button position after dragged
+X whisper people not to use guild chat
+X remember button position after dragged
 X send gchat message if noone is available to layer
 X check for offliners
 X remove or correct number display on button
 
 - update own layer when invited to other group
+
+- name layers by /whoing capitol city + provide menu of layers to select from
 
 ]]--
 
@@ -62,7 +64,7 @@ LayerMeFrame.inviter = nil;
 -- local LayerMeFrameButton = CreateFrame("Button", nil, LayerMeFrameButton, "GameMenuButtonTemplate");
 local LayerMeFrameButton = CreateFrame("Button", nil, UIParent, "GameMenuButtonTemplate");
 -- LayerMeFrameButton:SetPoint("CENTER", nil, UIParent, LayerMeSettings.x, LayerMeSettings.x)
-LayerMeFrameButton:SetPoint("CENTER", LayerMeSettings.x, LayerMeSettings.x)
+LayerMeFrameButton:SetPoint("CENTER", LayerMeSettings.x, LayerMeSettings.y)
 LayerMeFrameButton:SetWidth(100)
 LayerMeFrameButton:SetHeight(30)
 -- LayerMeFrameButton:SetText("LayerMe ("..#LayerMeFrame.registered..")")
@@ -99,9 +101,9 @@ LayerMeFrameButton:SetScript("OnMouseUp", function(this, button)
     if button == "LeftButton" and this.isMoving then
         this:StopMovingOrSizing();
         this.isMoving = false;
-        local point, parent, relativePoint, x, y = this:GetPoint(1)
-        LayerMeSettings.x = x;
-        LayerMeSettings.y = y;
+        local x, y = this:GetCenter()
+        local ux, uy = UIParent:GetCenter()
+        LayerMeSettings.x, LayerMeSettings.y = floor(x - ux + 0.5), floor(y - uy + 0.5)
     end
 end)
 
@@ -124,6 +126,7 @@ LayerMeFrameButton:SetScript("OnLeave", function()
     GameTooltip:Hide();
 end);
 
+LayerMeFrame:RegisterEvent("VARIABLES_LOADED");
 LayerMeFrame:RegisterEvent("CHAT_MSG_GUILD");
 LayerMeFrame:RegisterEvent("CHAT_MSG_ADDON");
 LayerMeFrame:RegisterEvent("PLAYER_ENTERING_WORLD");
@@ -191,6 +194,7 @@ function GuildieIsOnline(guildieName)
     return false;
 end
 
+-- not needed anymore
 function LayerMe_CheckForOffliners()
 
     local nbefore = #LayerMeFrame.registered;
@@ -401,6 +405,8 @@ LayerMeFrame:SetScript("OnEvent", function(this, event, arg1, arg2, arg3, arg4)
             end
             return
         end
+    elseif event == "VARIABLES_LOADED" then
+            LayerMeFrameButton:SetPoint("CENTER", LayerMeSettings.x, LayerMeSettings.y);
     else
         -- ChatFrame1:AddMessage(event);
     end
