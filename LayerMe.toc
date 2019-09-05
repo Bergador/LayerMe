@@ -1,0 +1,11 @@
+## Interface: 11302
+
+## Title: LayerMe
+
+## Notes: Game the layering system.
+
+## Version: 1.1
+## Author: Bergador
+## SavedVariablesPerCharacter: LayerMeSettings
+
+LayerMe.lua
