@@ -283,12 +283,12 @@ LayerMeFrame:SetScript("OnEvent", function(this, event, arg1, arg2, arg3, arg4)
                     
         if strfind(message, "layer") ~= nil and (strfind(message, "me") ~= nil or strfind(message, "inv") ~= nil or strfind(message, "pls") ~= nil or strfind(message, "plz") ~= nil or strfind(message, "please") ~= nil) then
         
-            local myContinent = GetContinent(playerName);
-            local theirContinent = GetContinent(author);
+            -- local myContinent = GetContinent(playerName);
+            -- local theirContinent = GetContinent(author);
             
-            if theirContinent ~= -1 and  theirContinent == myContinent then
-                LayerThisGuy(author);
-            end
+            -- if theirContinent ~= -1 and  theirContinent == myContinent then
+                -- LayerThisGuy(author);
+            -- end
             
             if string.find(message, "<LayerMe>") == nil then
                 -- ChatFrame1:AddMessage(author.." asked for new layer the old fashioned way - make him stop!", 1,0,0);
