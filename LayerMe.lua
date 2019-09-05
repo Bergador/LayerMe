@@ -402,7 +402,7 @@ LayerMeFrame:SetScript("OnEvent", function(this, event, arg1, arg2, arg3, arg4)
             end
             return
         end
-    elseif event == "VARIABLES_LOADED"
+    elseif event == "VARIABLES_LOADED" then
             LayerMeFrameButton:SetPoint("CENTER", LayerMeSettings.x, LayerMeSettings.y);
     else
         -- ChatFrame1:AddMessage(event);
