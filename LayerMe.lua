@@ -365,7 +365,7 @@ LayerMeFrame:SetScript("OnEvent", function(this, event, arg1, arg2, arg3, arg4)
 
                 local inviter = LayerMe_DetermineInviter(sender, layer);
 
-                if inviter == "NOONE" or inviter == nil then
+                if (inviter == "NOONE" or inviter == nil) and sender == playerName then
                     SendChatMessage("<LayerMe> layer me please", "GUILD");  -- fallback
                 else                     
                     -- ChatFrame1:AddMessage(inviter.." is responsible for inviting "..sender..".");
